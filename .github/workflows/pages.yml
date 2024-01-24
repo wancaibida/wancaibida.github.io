@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main  # default branch
+    paths-ignore:
+      - .github/workflows/notion_2_hexo.yml
 
 jobs:
   build:
