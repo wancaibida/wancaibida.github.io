@@ -52,6 +52,7 @@ jobs:
           clean_unpublished_post: false
           last_sync_datetime: ${{ steps.GetNotionSyncDatetime.outputs.NOTION_SYNC_DATETIME }}
           timezone: "UTC"
+          metas_keeped: false
       - name: Sync git & build
         if: steps.NotionSync.outputs.updated_count != '0'
         run: |
