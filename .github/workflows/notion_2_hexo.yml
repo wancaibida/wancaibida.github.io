@@ -49,10 +49,10 @@ jobs:
           pic_compress: true
           output_page_dir: "source"
           output_post_dir: "source/_posts/notion"
-          clean_unpublished_post: false
+          clean_unpublished_post: true
           last_sync_datetime: ${{ steps.GetNotionSyncDatetime.outputs.NOTION_SYNC_DATETIME }}
           timezone: "UTC"
-          metas_keeped: false
+          metas_keeped: ""
       - name: Sync git & build
         if: steps.NotionSync.outputs.updated_count != '0'
         run: |
