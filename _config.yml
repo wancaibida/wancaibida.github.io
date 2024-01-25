@@ -103,4 +103,4 @@ theme: landscape
 deploy:
   type: ''
 
-favicon: /favicon.ico
+favicon: favicon.ico
