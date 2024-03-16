@@ -7,15 +7,13 @@ tags:
   - pipeline
   - ci
   - cd
-updated: 2024-01-26 03:24:00
+updated: 2024-03-06 05:30:00
 title: Bitbucket Pipeline问题记录
 cover: https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg
 id: 05c3d026-62ed-4b36-8187-768ebfde9ae6
 ---
 
-# Stage Limitations
-
-## 无法使用 Parallel
+# 无法在 `stage`中使用 `parallel`
 
 <div style="width: 100%; margin-top: 4px; margin-bottom: 4px;"><div style="display: flex; background:white;border-radius:5px"><a href="https://support.atlassian.com/bitbucket-cloud/docs/parallel-step-options/"target="_blank"rel="noopener noreferrer"style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; flex-grow: 1; min-width: 0px; flex-wrap: wrap-reverse; align-items: stretch; text-align: left; overflow: hidden; border: 1px solid rgba(55, 53, 47, 0.16); border-radius: 5px; position: relative; fill: inherit;"><div style="flex: 4 1 180px; padding: 12px 14px 14px; overflow: hidden; text-align: left;"><div style="font-size: 14px; line-height: 20px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 24px; margin-bottom: 2px;">Parallel step options | Bitbucket Cloud | Atlassian Support</div><div style="font-size: 12px; line-height: 16px; color: rgba(55, 53, 47, 0.65); height: 32px; overflow: hidden;">Run multiple pipeline steps concurrently or in parallel to reduce build time</div><div style="display: flex; margin-top: 6px; height: 16px;"><img src="https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png"style="width: 16px; height: 16px; min-width: 16px; margin-right: 6px;"><div style="font-size: 12px; line-height: 16px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">https://support.atlassian.com/bitbucket-cloud/docs/parallel-step-options/</div></div></div></a></div></div>
 
@@ -205,3 +203,24 @@ definitions:
 <div style="width: 100%; margin-top: 4px; margin-bottom: 4px;"><div style="display: flex; background:white;border-radius:5px"><a href="https://support.atlassian.com/bitbucket-cloud/docs/deploy-on-aws-using-bitbucket-pipelines-openid-connect/"target="_blank"rel="noopener noreferrer"style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; flex-grow: 1; min-width: 0px; flex-wrap: wrap-reverse; align-items: stretch; text-align: left; overflow: hidden; border: 1px solid rgba(55, 53, 47, 0.16); border-radius: 5px; position: relative; fill: inherit;"><div style="flex: 4 1 180px; padding: 12px 14px 14px; overflow: hidden; text-align: left;"><div style="font-size: 14px; line-height: 20px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 24px; margin-bottom: 2px;">Deploy on AWS using Bitbucket Pipelines OpenID Connect | Bitbucket Cloud | Atlassian Support</div><div style="font-size: 12px; line-height: 16px; color: rgba(55, 53, 47, 0.65); height: 32px; overflow: hidden;">Use Bitbucket Pipelines OpenID Connect to deploy your builds on AWS</div><div style="display: flex; margin-top: 6px; height: 16px;"><img src="https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png"style="width: 16px; height: 16px; min-width: 16px; margin-right: 6px;"><div style="font-size: 12px; line-height: 16px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">https://support.atlassian.com/bitbucket-cloud/docs/deploy-on-aws-using-bitbucket-pipelines-openid-connect/</div></div></div></a></div></div>
 
 <div style="width: 100%; margin-top: 4px; margin-bottom: 4px;"><div style="display: flex; background:white;border-radius:5px"><a href="https://support.atlassian.com/bitbucket-cloud/docs/integrate-pipelines-with-resource-servers-using-oidc/"target="_blank"rel="noopener noreferrer"style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; flex-grow: 1; min-width: 0px; flex-wrap: wrap-reverse; align-items: stretch; text-align: left; overflow: hidden; border: 1px solid rgba(55, 53, 47, 0.16); border-radius: 5px; position: relative; fill: inherit;"><div style="flex: 4 1 180px; padding: 12px 14px 14px; overflow: hidden; text-align: left;"><div style="font-size: 14px; line-height: 20px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 24px; margin-bottom: 2px;">Integrate Pipelines with resource servers using OIDC | Bitbucket Cloud | Atlassian Support</div><div style="font-size: 12px; line-height: 16px; color: rgba(55, 53, 47, 0.65); height: 32px; overflow: hidden;">Use Bitbucket Pipelines OpenID Connect Provider (OIDC IDP) to allow your pipelines to access your resource server</div><div style="display: flex; margin-top: 6px; height: 16px;"><img src="https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png"style="width: 16px; height: 16px; min-width: 16px; margin-right: 6px;"><div style="font-size: 12px; line-height: 16px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">https://support.atlassian.com/bitbucket-cloud/docs/integrate-pipelines-with-resource-servers-using-oidc/</div></div></div></a></div></div>
+
+# Artifact
+
+不支持环境变量名 , 比如:
+
+```javascript
+        script:
+          - apt-get update && apt-get install -y zip
+          - python3 -m pip install --upgrade pip
+          - pip install poetry
+          - poetry export --only $FUNCTION -f requirements.txt -o ./$FUNCTION/requirements.txt --without-hashes --without-urls
+          - cd $FUNCTION
+          - zip -r $FUNCTION.zip .
+
+        artifacts:
+          - $FUNCTION/$FUNCTION.zip
+```
+
+##
+
+<div style="width: 100%; margin-top: 4px; margin-bottom: 4px;"><div style="display: flex; background:white;border-radius:5px"><a href="https://support.atlassian.com/bitbucket-cloud/docs/use-artifacts-in-steps/"target="_blank"rel="noopener noreferrer"style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; flex-grow: 1; min-width: 0px; flex-wrap: wrap-reverse; align-items: stretch; text-align: left; overflow: hidden; border: 1px solid rgba(55, 53, 47, 0.16); border-radius: 5px; position: relative; fill: inherit;"><div style="flex: 4 1 180px; padding: 12px 14px 14px; overflow: hidden; text-align: left;"><div style="font-size: 14px; line-height: 20px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 24px; margin-bottom: 2px;">Pipeline artifacts | Bitbucket Cloud | Atlassian Support</div><div style="font-size: 12px; line-height: 16px; color: rgba(55, 53, 47, 0.65); height: 32px; overflow: hidden;">Artifacts are files that are produced by a step. Once you've defined them in your Bitbucket Pipeline configuration, you can share or export them.</div><div style="display: flex; margin-top: 6px; height: 16px;"><img src="https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png"style="width: 16px; height: 16px; min-width: 16px; margin-right: 6px;"><div style="font-size: 12px; line-height: 16px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">https://support.atlassian.com/bitbucket-cloud/docs/use-artifacts-in-steps/</div></div></div></a></div></div>
