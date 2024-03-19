@@ -21,3 +21,5 @@ EFI使用的是这为大佬的: https://github.com/paranoid2006/ASRock-Deskmini-
 有了[上次](/2019/06/13/Deskmini-310-黑苹果折腾记/)的安装经历, 这次的安装过程就很简单了, 制作usb安装盘->替换掉安装盘里的efi->安装系统->系统安装成功后在替换系统的efi->修改三码->完成.
 
 
+Update:
+* 2024-03-18 用了[hackintosh-club/ASRock-DeskMini-H470-OpenCore](https://github.com/hackintosh-club/ASRock-DeskMini-H470-OpenCore)将系统升级成了Ventura

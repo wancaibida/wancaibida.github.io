@@ -47,3 +47,4 @@ date: 2019-06-13 20:47:00
 * 2019-06-16: 更新了发现的问题
 * 2019-08-07: 升级到了10.14.6一切正常 
 * 2021-04-08: 更换成免驱动的无线网卡
+* 2024-03-18: 用[hackintosh-club/ASRock-DeskMini-310](https://github.com/hackintosh-club/ASRock-DeskMini-310)将系统升级成了 Ventura

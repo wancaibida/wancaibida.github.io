@@ -104,3 +104,6 @@ deploy:
   type: ''
 
 disqus_shortname: w2x-me
+
+index_generator:
+  order_by: date
