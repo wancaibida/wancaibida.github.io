@@ -4,7 +4,7 @@ categories:
   - linux
 tags:
   - windows
-updated: 2024-03-19 07:11:00
+updated: 2024-03-19 07:14:00
 title: 如何在装有windows的macbook pro下开启虚拟化
 id: 5f2bdb92-c2c1-498c-b5a3-0d6a2adb2b42
 ---
