@@ -4,7 +4,7 @@ categories:
   - linux
 tags:
   - windows
-updated: 2024-03-16 14:07:00
+updated: 2024-03-19 07:11:00
 title: 如何在装有windows的macbook pro下开启虚拟化
 id: 5f2bdb92-c2c1-498c-b5a3-0d6a2adb2b42
 ---
@@ -13,6 +13,7 @@ id: 5f2bdb92-c2c1-498c-b5a3-0d6a2adb2b42
 
 <div style="width: 100%; margin-top: 4px; margin-bottom: 4px;"><div style="display: flex; background:white;border-radius:5px"><a href="https://www.rodsbooks.com/refind/installing.html#windows"target="_blank"rel="noopener noreferrer"style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; flex-grow: 1; min-width: 0px; flex-wrap: wrap-reverse; align-items: stretch; text-align: left; overflow: hidden; border: 1px solid rgba(55, 53, 47, 0.16); border-radius: 5px; position: relative; fill: inherit;"><div style="flex: 4 1 180px; padding: 12px 14px 14px; overflow: hidden; text-align: left;"><div style="font-size: 14px; line-height: 20px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 24px; margin-bottom: 2px;">The rEFInd Boot Manager: Installing and Uninstalling rEFInd</div><div style="font-size: 12px; line-height: 16px; color: rgba(55, 53, 47, 0.65); height: 32px; overflow: hidden;"></div><div style="display: flex; margin-top: 6px; height: 16px;"><img src=""style="width: 16px; height: 16px; min-width: 16px; margin-right: 6px;"><div style="font-size: 12px; line-height: 16px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">https://www.rodsbooks.com/refind/installing.html#windows</div></div></div></a></div></div>
 
-```sql
-修改配置：打开图中的refind文件夹，找到refind.conf-sample文件，重命名为refind.conf，并用文本编辑器打开它，搜索·enable_and_lock_vmx，把它的值改为true，并且注意把前面的#号去掉
-```
+修改配置：
+
+1. 打开 `refind`文件夹，找到 `refind.conf-sample`文件，重命名为 `refind.conf`
+2. 用文本编辑器打开它，搜索 `enable_and_lock_vmx`，把它的值改为 `true`，并且注意把前面的 `#` 号去掉
