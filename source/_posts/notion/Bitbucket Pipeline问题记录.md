@@ -7,7 +7,7 @@ tags:
   - pipeline
   - ci
   - cd
-updated: 2024-04-03 03:32:00
+updated: 2024-04-15 08:34:00
 date: 2023-02-27 00:00:00
 title: Bitbucket Pipeline问题记录
 cover: https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg
@@ -55,6 +55,8 @@ id: 05c3d026-62ed-4b36-8187-768ebfde9ae6
                   - echo $BITBUCKET_STEP_OIDC_TOKEN > $(pwd)/web-identity-token
                   - npx cdk deploy test-$BITBUCKET_DEPLOYMENT_ENVIRONMENT-store-sfn-solana-stack --require-approval never
 ```
+
+关键点在于 `deployment` 属性只能属于 `step` 或者 `stage` ，但是`parallel` 会有多个`step` ，但是 `deployment` 属性只能出现一次
 
 > **Limitations**
 
@@ -226,9 +228,14 @@ definitions:
           - $FUNCTION/$FUNCTION.zip
 ```
 
-##
-
 <div style="width: 100%; margin-top: 4px; margin-bottom: 4px;"><div style="display: flex; background:white;border-radius:5px"><a href="https://support.atlassian.com/bitbucket-cloud/docs/use-artifacts-in-steps/"target="_blank"rel="noopener noreferrer"style="display: flex; color: inherit; text-decoration: none; user-select: none; transition: background 20ms ease-in 0s; cursor: pointer; flex-grow: 1; min-width: 0px; flex-wrap: wrap-reverse; align-items: stretch; text-align: left; overflow: hidden; border: 1px solid rgba(55, 53, 47, 0.16); border-radius: 5px; position: relative; fill: inherit;"><div style="flex: 4 1 180px; padding: 12px 14px 14px; overflow: hidden; text-align: left;"><div style="font-size: 14px; line-height: 20px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-height: 24px; margin-bottom: 2px;">Pipeline artifacts | Bitbucket Cloud | Atlassian Support</div><div style="font-size: 12px; line-height: 16px; color: rgba(55, 53, 47, 0.65); height: 32px; overflow: hidden;">Artifacts are files that are produced by a step. Once you've defined them in your Bitbucket Pipeline configuration, you can share or export them.</div><div style="display: flex; margin-top: 6px; height: 16px;"><img src="https://wac-cdn.atlassian.com/assets/img/favicons/atlassian/favicon.png"style="width: 16px; height: 16px; min-width: 16px; margin-right: 6px;"><div style="font-size: 12px; line-height: 16px; color: rgb(55, 53, 47); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">https://support.atlassian.com/bitbucket-cloud/docs/use-artifacts-in-steps/</div></div></div></a></div></div>
+
+通配符用法
+
+```sql
+        artifacts:
+          - '*.zip'
+```
 
 # Multiple Lines Script
 
@@ -253,4 +260,27 @@ pipelines:
               echo "STACK_NAME is set to '$STACK_NAME'";
               npx cdk deploy $STACK_NAME --require-approval never
             fi
+```
+
+```sql
+          - >
+            functions=("1" "2" "3")
+            //这里要换行  不然报错
+            for function in "${functions[@]}"; do
+              gcloud functions deploy $(echo $function | tr '_' '-') --source=gs://$BUCKET_NAME/$function.zip --region=us-west2
+            done
+```
+
+# `echo` 报错问题
+
+比如下面包含 `:空格` 会报错：
+
+```json
+          - echo "Groups to package: ${groups[@]}"
+```
+
+改成
+
+```json
+          - echo "Groups to package:\ ${groups[@]}"
 ```
