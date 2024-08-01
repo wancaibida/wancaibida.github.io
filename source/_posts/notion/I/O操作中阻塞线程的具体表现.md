@@ -4,7 +4,7 @@ categories:
   - jvm
 tags:
   - linux
-updated: 2024-07-24 02:15:00
+updated: 2024-07-24 08:09:00
 date: 2024-07-24 00:00:00
 title: I/O操作中阻塞线程的具体表现
 id: fec3c214-bce5-429c-bb23-bb4b6f22729f
@@ -52,3 +52,5 @@ java NIO
   c. 线程调用选择器的 select()方法。
   d. 选择器返回已经就绪的通道。
   e. 线程对就绪的通道执行 I/O 操作。
+
+> A context switch can occur while the kernel is executing a system call on behalf of the user. If the system call blocks because it is waiting for some event to occur, then the kernel can put the current process to sleep and switch to another process. For example, if a system call requires a disk access, the kernel can opt to perform a context switch and run another process instead of waiting for the data to arrive from the disk. Another example is the system call, which is an explicit request to put the calling process to sleep. In general, even if a system call does not block, the kernel can decide to perform a context switch rather than return control to the calling process.
