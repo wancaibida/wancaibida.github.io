@@ -7,7 +7,7 @@ tags:
   - pipeline
   - ci
   - cd
-updated: 2024-04-15 08:34:00
+updated: 2024-08-21 09:29:00
 date: 2023-02-27 00:00:00
 title: Bitbucket Pipeline问题记录
 cover: https://www.notion.so/images/page-cover/met_william_morris_1877_willow.jpg
