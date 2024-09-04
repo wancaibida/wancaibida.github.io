@@ -1,12 +1,11 @@
 ---
 created: 2024-09-04 03:32:00
 categories:
-  - linux
   - jvm
-  - life
 tags:
   - linux
-updated: 2024-09-04 07:12:00
+  - ai
+updated: 2024-09-04 07:16:00
 date: 2024-09-04 00:00:00
 title: Github Copilot 使用体验
 id: 80e9f565-cce1-4023-b07a-50fed4f8ca0b
