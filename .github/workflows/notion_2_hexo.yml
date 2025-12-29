@@ -78,4 +78,4 @@ jobs:
       - name: Deploy to GitHub Pages
         if: steps.NotionSync.outputs.updated_count != '0'
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
