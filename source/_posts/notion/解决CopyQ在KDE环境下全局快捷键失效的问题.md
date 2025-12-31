@@ -4,7 +4,8 @@ categories:
   - linux
 tags:
   - linux
-updated: 2025-12-29 07:44:00
+updated: 2025-12-31 11:59:00
+date: 2025-12-30 00:00:00
 title: 解决CopyQ在KDE环境下全局快捷键失效的问题
 id: 2d44ee3d-e06e-801e-9209-f276493bf791
 ---
